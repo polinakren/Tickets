@@ -83,6 +83,7 @@ export const StyledHr = styled.hr`
 `;
 
 export const StyledStopsBlock = styled.div`
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-content: center;

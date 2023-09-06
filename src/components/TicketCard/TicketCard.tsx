@@ -86,7 +86,7 @@ const logos: Record<string, string> = {
 };
 
 const formatPrice = (price: number, currency: string) => {
-  const formattedPrice = price.toLocaleString('ru-RU', {
+  const formattedPrice = exchangeRate(price, currency).toLocaleString('ru-RU', {
     style: 'decimal',
     maximumFractionDigits: 0,
   });
@@ -106,4 +106,17 @@ const formatDate = (inputDate: string) => {
   const date = new Date(year, month - 1, day);
 
   return `${day} ${months[month - 1]} ${year}, ${daysOfWeek[date.getDay()]}`;
+};
+
+const exchangeRate = (price: number, currency: string) => {
+  switch (currency) {
+    case 'RUB':
+      return price;
+    case 'USD':
+      return price / 98;
+    case 'EUR':
+      return price / 103;
+    default:
+      return price;
+  }
 };

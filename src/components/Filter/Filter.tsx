@@ -4,7 +4,15 @@ import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 import { transfer } from '~utils/transfer';
-import { Spacer, StyledCheckbox, StyledCheckboxBlock, StyledFormItem, StyledTitle } from './styles';
+import {
+  Spacer,
+  StyledCheckboxGroup,
+  StyledCheckboxBlock,
+  StyledFormItem,
+  StyledRadioBtn,
+  StyledTitle,
+  StyledCheckbox,
+} from './styles';
 
 export interface TicketFilterValues {
   currency?: string;
@@ -40,18 +48,18 @@ export const Filter = ({ onFilterChange, initialValues }: FilterProps) => {
         <StyledTitle>Валюта</StyledTitle>
         <StyledFormItem name='currency'>
           <Radio.Group buttonStyle='solid'>
-            <Radio.Button value='RUB'>RUB</Radio.Button>
-            <Radio.Button value='USD'>USD</Radio.Button>
-            <Radio.Button value='EUR'>EUR</Radio.Button>
+            <StyledRadioBtn value='RUB'>RUB</StyledRadioBtn>
+            <StyledRadioBtn value='USD'>USD</StyledRadioBtn>
+            <StyledRadioBtn value='EUR'>EUR</StyledRadioBtn>
           </Radio.Group>
         </StyledFormItem>
         <StyledCheckboxBlock>
           <StyledTitle>Количество пересадок</StyledTitle>
-          <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+          <StyledCheckbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
             Все
-          </Checkbox>
+          </StyledCheckbox>
           <StyledFormItem name='stops'>
-            <StyledCheckbox options={transfer} value={checkedList} onChange={onChange} />
+            <StyledCheckboxGroup options={transfer} value={checkedList} onChange={onChange} />
           </StyledFormItem>
         </StyledCheckboxBlock>
       </Form>

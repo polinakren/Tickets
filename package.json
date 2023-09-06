@@ -2,6 +2,7 @@
   "name": "tickets",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/tickets/",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@emotion/styled": "^11.11.0",
@@ -14,6 +15,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.dev.js",
     "test": "react-scripts test",
